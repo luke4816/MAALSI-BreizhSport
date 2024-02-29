@@ -6,7 +6,7 @@ WORKDIR /usr/src/app
 
 COPY package*.json .
 
-RUN npm i --omit=dev --no-cache
+RUN npm i --no-cache
 
 COPY . .
 
