@@ -1,7 +1,6 @@
 # Builder
 FROM node:20-alpine as builder
 
-ENV NODE_ENV production
 WORKDIR /usr/src/app
 
 COPY package*.json .
@@ -32,5 +31,5 @@ CMD ["npm", "start"]
 
 # Prod image
 FROM nginx:stable-alpine as prod
-COPY --from=builder /usr/src/app/build /usr/share/nginx/html
+COPY --from=builder /usr/src/app/dist /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
