@@ -42,7 +42,7 @@ jobs:
               uses: docker/build-push-action@v5
               with:
                   context: frontend
-                  target: stage
+                  target: ${{ inputs.stage }}
                   push: true
                   platforms: linux/amd64,linux/arm64
                   tags: ${{ env.REGISTRY }}/${{ github.repository_owner }}/breizh-sport-frontend:${{ inputs.tags }}
