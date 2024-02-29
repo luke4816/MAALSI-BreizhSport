@@ -2,7 +2,7 @@ name: Run deployment on staging environment
 
 on:
     push:
-        branches: ["releases/*"]
+        branches: ["release/*"]
 
 jobs:
     test:
