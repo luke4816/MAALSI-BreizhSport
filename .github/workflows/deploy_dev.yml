@@ -1,0 +1,23 @@
+name: Run deployment on development environment
+
+on:
+    push:
+        branches: ["develop"]
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Run test
+              uses: ./test.yml
+
+    build:
+        needs: [test]
+        runs-on: ubuntu-latest
+        steps:
+            - name: Build docker images
+              uses: ./build.yml
+              with:
+                  tags: dev
+                  environment: development
+                  registry_token: ${{ secrets.GITHUB_TOKEN }}

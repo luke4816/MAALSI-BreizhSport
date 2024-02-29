@@ -1,0 +1,23 @@
+name: Deploy on Production Environment
+
+on:
+    push:
+        branches: ["main"]
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Run test
+              uses: ./test.yml
+
+    build:
+        needs: [test]
+        runs-on: ubuntu-latest
+        steps:
+            - name: Build docker images
+              uses: ./build.yml
+              with:
+                  tags: ${{ github.ref }}
+                  environment: production
+                  registry_token: ${{ secrets.GITHUB_TOKEN }}

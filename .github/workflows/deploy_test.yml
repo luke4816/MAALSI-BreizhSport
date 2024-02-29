@@ -1,0 +1,23 @@
+name: Run deployment on staging environment
+
+on:
+    push:
+        branches: ["releases/*"]
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Run test
+              uses: ./test.yml
+
+    build:
+        needs: [test]
+        runs-on: ubuntu-latest
+        steps:
+            - name: Build docker images
+              uses: ./build.yml
+              with:
+                  tags: ${{ github.ref }}-staging
+                  environment: staging
+                  registry_token: ${{ secrets.GITHUB_TOKEN }}
