@@ -16,7 +16,14 @@ jobs:
             contents: read
             packages: write
         with:
-            tags: ${{ github.ref }}
+            tags: latest
             environment: production
             stage: prod
+        secrets: inherit
+
+    deploy:
+        needs: [build]
+        uses: ./.github/workflows/deploy.yml
+        with:
+            environment: production
         secrets: inherit

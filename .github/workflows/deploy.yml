@@ -1,0 +1,17 @@
+name: Deploy
+
+on:
+    workflow_call:
+        inputs:
+            environment:
+                required: true
+                type: string
+
+jobs:
+    deployment:
+        runs-on: ubuntu-latest
+        environment: ${{ inputs.environment }}
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3

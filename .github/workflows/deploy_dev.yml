@@ -20,3 +20,10 @@ jobs:
             environment: development
             stage: dev
         secrets: inherit
+
+    deploy:
+        needs: [build]
+        uses: ./.github/workflows/deploy.yml
+        with:
+            environment: development
+        secrets: inherit
