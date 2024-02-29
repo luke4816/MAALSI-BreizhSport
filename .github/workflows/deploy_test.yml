@@ -15,5 +15,4 @@ jobs:
         with:
             tags: ${{ github.ref }}-staging
             environment: staging
-            registry_token: ${{ secrets.GITHUB_TOKEN }}
         secrets: inherit

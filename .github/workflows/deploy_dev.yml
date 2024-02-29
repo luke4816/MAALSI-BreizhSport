@@ -15,5 +15,4 @@ jobs:
         with:
             tags: dev
             environment: development
-            registry_token: ${{ secrets.GITHUB_TOKEN }}
         secrets: inherit

@@ -15,5 +15,4 @@ jobs:
         with:
             tags: ${{ github.ref }}
             environment: production
-            registry_token: ${{ secrets.GITHUB_TOKEN }}
         secrets: inherit
