@@ -9,14 +9,14 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Run test
-              uses: ./test.yml
+              uses: ./github/workflows/test.yml
 
     build:
         needs: [test]
         runs-on: ubuntu-latest
         steps:
             - name: Build docker images
-              uses: ./build.yml
+              uses: ./github/workflows/build.yml
               with:
                   tags: ${{ github.ref }}-staging
                   environment: staging
