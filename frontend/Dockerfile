@@ -1,3 +1,13 @@
+FROM node:20-alpine as installer
+
+WORKDIR /usr/src/app
+
+COPY package*.json .
+
+RUN npm i
+
+RUN mkdir dist
+
 # Builder
 FROM node:20-alpine as builder
 
@@ -15,11 +25,9 @@ RUN npm run build
 FROM node:20-alpine as dev
 
 WORKDIR /usr/src/app
+
+COPY --chown=node:node --from=installer /usr/src/app .
 USER node
-
-COPY --chown=node:node package*.json .
-
-RUN npm i -no-cache
 
 COPY --chown=node:node . .
 
