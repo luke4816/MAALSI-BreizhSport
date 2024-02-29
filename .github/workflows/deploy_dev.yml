@@ -1,0 +1,22 @@
+name: Run deployment on development environment
+
+on:
+    push:
+        branches: ["develop"]
+
+jobs:
+    test:
+        uses: ./.github/workflows/test.yml
+        secrets: inherit
+
+    build:
+        needs: [test]
+        uses: ./.github/workflows/build.yml
+        permissions:
+            contents: read
+            packages: write
+        with:
+            tags: dev
+            environment: development
+            stage: dev
+        secrets: inherit

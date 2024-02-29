@@ -1,0 +1,22 @@
+name: Deploy on Production Environment
+
+on:
+    push:
+        branches: ["main"]
+
+jobs:
+    test:
+        uses: ./.github/workflows/test.yml
+        secrets: inherit
+
+    build:
+        needs: [test]
+        uses: ./.github/workflows/build.yml
+        permissions:
+            contents: read
+            packages: write
+        with:
+            tags: ${{ github.ref }}
+            environment: production
+            stage: prod
+        secrets: inherit

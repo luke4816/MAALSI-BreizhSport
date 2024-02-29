@@ -1,0 +1,22 @@
+name: Run deployment on staging environment
+
+on:
+    push:
+        branches: ["release/*"]
+
+jobs:
+    test:
+        uses: ./.github/workflows/test.yml
+        secrets: inherit
+
+    build:
+        needs: [test]
+        uses: ./.github/workflows/build.yml
+        permissions:
+            contents: read
+            packages: write
+        with:
+            tags: staging
+            environment: staging
+            stage: prod
+        secrets: inherit
