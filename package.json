@@ -1,0 +1,13 @@
+{
+  "name": "maalsi-breizhsport",
+  "version": "1.0.0",
+  "description": "E-Commerce Website build to validate a semester as a MAALSI's student",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "prettier": "^3.2.5"
+  }
+}
