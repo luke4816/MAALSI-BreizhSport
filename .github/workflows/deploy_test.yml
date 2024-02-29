@@ -16,7 +16,7 @@ jobs:
             contents: read
             packages: write
         with:
-            tags: ${{ github.head_ref }}-staging
+            tags: ${{ github.ref_name }}-staging
             environment: staging
             stage: prod
         secrets: inherit
