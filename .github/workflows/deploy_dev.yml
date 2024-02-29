@@ -18,4 +18,5 @@ jobs:
         with:
             tags: dev
             environment: development
+            stage: dev
         secrets: inherit
