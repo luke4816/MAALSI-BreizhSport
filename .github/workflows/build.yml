@@ -17,6 +17,9 @@ jobs:
     frontend-build:
         runs-on: ubuntu-latest
         environment: ${{ inputs.environment }}
+        permissions:
+            contents: read
+            packages: write
 
         steps:
             - name: Checkout
