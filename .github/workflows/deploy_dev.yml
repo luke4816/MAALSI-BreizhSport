@@ -12,6 +12,8 @@ jobs:
     build:
         needs: [test]
         uses: ./.github/workflows/build.yml
+        permissions:
+            packages: write
         with:
             tags: dev
             environment: development
