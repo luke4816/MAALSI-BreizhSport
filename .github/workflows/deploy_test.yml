@@ -2,7 +2,7 @@ name: Run deployment on staging environment
 
 on:
     push:
-        branches: ["releases/*"]
+        branches: ["release/*"]
 
 jobs:
     test:
@@ -16,7 +16,7 @@ jobs:
             contents: read
             packages: write
         with:
-            tags: ${{ github.ref }}-staging
+            tags: staging
             environment: staging
             stage: prod
         secrets: inherit
