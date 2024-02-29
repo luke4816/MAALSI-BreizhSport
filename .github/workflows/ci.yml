@@ -1,0 +1,10 @@
+name: Run tests features and hotfixes
+
+on:
+    push:
+        branches: ["feature/*", "hotfix/*"]
+
+jobs:
+    tests:
+        uses: ./.github/workflows/test.yml
+        secrets: inherit
