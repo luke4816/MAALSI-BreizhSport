@@ -14,7 +14,7 @@ on:
                 type: string
 
 jobs:
-    frontend-tests:
+    frontend-build:
         runs-on: ubuntu-latest
         environment: ${{ inputs.environment }}
         defaults:
@@ -42,7 +42,7 @@ jobs:
                   platforms: linux/amd64,linux/arm64
                   tags: ${{ vars.REGISTRY }}/${{ github.repository_owner }}/breizh-sport-frontend:${{ inputs.tags }}
 
-    core-tests:
+    core-build:
         runs-on: ubuntu-latest
         defaults:
             run:
@@ -54,7 +54,7 @@ jobs:
             - name: Setup node
               uses: actions/setup-node@v3
 
-    promotions-tests:
+    promotions-build:
         runs-on: ubuntu-latest
         defaults:
             run:
@@ -63,7 +63,7 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v3
 
-    auth-tests:
+    auth-build:
         runs-on: ubuntu-latest
         defaults:
             run:
@@ -72,7 +72,7 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v3
 
-    profiles-tests:
+    profiles-build:
         runs-on: ubuntu-latest
         defaults:
             run:
@@ -81,7 +81,7 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v3
 
-    contact-tests:
+    contact-build:
         runs-on: ubuntu-latest
         defaults:
             run:
